@@ -1,0 +1,40 @@
+version: '3.3'
+services:
+  hzga-fe:
+    build:
+      context: ./anti-fraud-system-fe
+      dockerfile: Dockerfile
+    image: ataola/hzga-fe:0.0.1
+    ports:
+      - "80:80"
+    networks:
+      - net-hzga
+    container_name: hzga-fe
+    restart: on-failure
+  hzga-be:
+    build:
+      context: ./anti-fraud-system-be
+      dockerfile: Dockerfile
+    image: ataola/hzga-be:0.0.1
+    ports:
+      - "7001:7001"
+    depends_on:
+      - hzga-mysql
+    networks:
+      - net-hzga
+    container_name: hzga-be
+    restart: on-failure
+  hzga-mysql:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    image: ataola/hzga-mysql:0.0.1
+    ports:
+      - "3306:3306"
+    networks:
+      - net-hzga
+    container_name: hzga-mysql
+    restart: on-failure
+networks:
+  net-hzga:
+    driver: bridge

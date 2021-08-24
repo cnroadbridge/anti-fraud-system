@@ -1,0 +1,80 @@
+{
+  "name": "anti-fraud-system-be",
+  "version": "1.0.0",
+  "description": "anti fraud system backend use egg framework and node.js",
+  "private": true,
+  "egg": {
+    "declarations": true,
+    "tsHelper": {
+      "watchDirs": {
+        "enum": {
+          "enabled": true,
+          "directory": "app/enum",
+          "declareTo": "Application.enum"
+        },
+        "util": {
+          "enabled": true,
+          "directory": "app/util",
+          "declareTo": "Application.util"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "dayjs": "^1.10.6",
+    "egg": "^2.15.1",
+    "egg-cors": "^2.2.3",
+    "egg-jsonp": "^2.0.0",
+    "egg-logger": "^2.6.1",
+    "egg-scripts": "^2.11.0",
+    "egg-sequelize": "^6.0.0",
+    "egg-ts-helper": "^1.25.9",
+    "egg-validate": "^2.0.2",
+    "mysql2": "^2.2.5",
+    "mz-modules": "^2.1.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "babel-eslint": "10.1.0",
+    "egg-bin": "^4.11.0",
+    "egg-ci": "^1.11.0",
+    "egg-mock": "^3.21.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-egg": "^7.1.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.2"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-anti-fraud-system-be",
+    "stop": "egg-scripts stop --title=egg-server-anti-fraud-system-be",
+    "docker": "egg-scripts start --port=7001 --workers=4 --title=egg-server-anti-fraud-system-be --ignore-stderr",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod",
+    "typing": "npx ets",
+    "pm2": "pm2 start server.js --env ecosystem.config.js"
+  },
+  "ci": {
+    "version": "10"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "ataola(zjt613@gmail.com)",
+  "license": "MIT"
+}
